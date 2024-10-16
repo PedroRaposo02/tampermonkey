@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Moodle questions autocomplete
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Script to automatically complete multiple-choice questions on Moodle using OpenAI's GPT-3 API.
 // @author       Pedro Raposo
 // @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
@@ -51,6 +51,7 @@ Important:
 - "text" must be the full correct answer as provided in the options below.
 - "number" must be the answer's corresponding number (as shown in the options).
 - Do not return anything other than this JSON object.
+- Don't include any additional information in your response (including \`\`\`json, just simply the json to be JSON.parse).
 
 Here is the question and its possible answers:
 Question: "${questionText}"
@@ -89,11 +90,16 @@ async function getGPTAnswer(question, answers) {
 
 	const data = await response.json();
 
-	console.log(data);
-
 	try {
 		// Parse and return JSON response
-		const result = JSON.parse(data.choices[0].text.trim());
+		/**
+		 * Example result:
+		 * {
+		 *  "text": "Falso",
+		 *  "number": "a"
+		 * }
+		 */
+		const result = JSON.parse(data.choices[0].message.content);
 		return result;
 	} catch (error) {
 		console.error("Failed to parse GPT response: ", error);
@@ -136,7 +142,6 @@ async function getGPTAnswer(question, answers) {
 			questionText,
 			answers,
 			element: question,
-			state: "Incomplete",
 		});
 	});
 
