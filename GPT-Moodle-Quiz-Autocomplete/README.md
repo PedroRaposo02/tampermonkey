@@ -67,16 +67,28 @@ The **GPT Answer Selector** is a Tampermonkey script designed to enhance the use
 Here’s a simplified version of how the core functionality works:
 
 ```javascript
-async function getGPTAnswer(questionText, answers) {
-    const prompt = basePrompt(questionText, answers);
-    const response = await fetch('https://api.openai.com/v1/completions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({ model: 'gpt-3.5-turbo', prompt: prompt, max_tokens: 150 }),
-    });
-    const data = await response.json();
-    return JSON.parse(data.choices[0].text.trim());
+async function getGPTAnswer(question, answers) {
+	const apiKey = getGPTKey();
+	if (!apiKey) return null;
+
+	const response = await fetch("https://api.openai.com/v1/chat/completions", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${apiKey}`,
+		},
+		body: JSON.stringify({
+			model: "gpt-4",
+			messages: [{ role: "system", content: basePrompt(question, answers) }],
+		}),
+	});
+
+	try {
+		const data = await response.json();
+		return JSON.parse(data.choices[0].message.content);
+	} catch (error) {
+		console.error("Error parsing GPT response: ", error);
+		return null;
+	}
 }
+
