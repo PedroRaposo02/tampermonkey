@@ -4,8 +4,8 @@
 // @version      1.0.4
 // @description  Script to automatically complete multiple-choice questions on Moodle using OpenAI's GPT-3 API.
 // @author       Pedro Raposo
-// @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
-// @downloadURL  https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
+// @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/GPT-Moodle-Quiz-Autocomplete/main.js
+// @downloadURL  https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/GPT-Moodle-Quiz-Autocomplete/main.js
 // @match        https://moodle.isep.ipp.pt/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ipp.pt
 // @grant        none
@@ -103,7 +103,9 @@ async function getGPTAnswer(question, answers) {
 		return result;
 	} catch (error) {
 		console.error("Failed to parse GPT response: ", error);
-		alert("Failed to parse GPT response. Please check the console for details.");
+		alert(
+			"Failed to parse GPT response. Please check the console for details."
+		);
 	}
 }
 
