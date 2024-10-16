@@ -4,8 +4,8 @@
 // @version      1.0.1
 // @description  Script to automatically complete multiple-choice questions on Moodle using OpenAI's GPT-3 API.
 // @author       Pedro Raposo
-// @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
-// @downloadURL  https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
+// @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
+// @downloadURL  https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
 // @match        https://moodle.isep.ipp.pt/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ipp.pt
 // @grant        none
