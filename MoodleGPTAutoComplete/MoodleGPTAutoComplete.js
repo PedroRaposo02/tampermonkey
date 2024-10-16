@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Moodle questions autocomplete
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Script to automatically complete multiple-choice questions on Moodle using OpenAI's GPT-3 API.
 // @author       Pedro Raposo
 // @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/MoodleGPTAutoComplete/MoodleGPTAutoComplete.js
@@ -70,7 +70,7 @@ async function getGPTAnswer(question, answers) {
 
 	const finalPrompt = basePrompt(question, answers);
 
-	const response = await fetch("https://api.openai.com/v1/completions", {
+	const response = await fetch("https://api.openai.com/v1/chat/completions", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -93,6 +93,7 @@ async function getGPTAnswer(question, answers) {
 		return result;
 	} catch (error) {
 		console.error("Failed to parse GPT response: ", error);
+		alert("Failed to parse GPT response. Please check the console for details.");
 	}
 }
 
@@ -180,7 +181,7 @@ async function getGPTAnswer(question, answers) {
 					}
 				})
 				.catch((error) => {
-					console.error("Error fetching GPT answer:", error);
+					console.error("Error:", error);
 				});
 		});
 
