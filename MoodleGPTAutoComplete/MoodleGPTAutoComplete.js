@@ -140,18 +140,19 @@ async function getGPTAnswer(question, answers) {
 
 		// Create a button for each question
 		const button = document.createElement("button");
-		button.innerText = "Complete Question";
+		button.innerText = "✓";
 
 		// Apply styling to position the button at the top-right
 		button.style.position = "absolute";
 		button.style.bottom = "10px"; // Adjust as needed
 		button.style.right = "10px"; // Adjust as needed
 		button.style.zIndex = "10"; // Ensure it stays on top
-		button.style.backgroundColor = "#4CAF50"; // Button color (optional)
-		button.style.color = "white"; // Button text color (optional)
+		button.style.backgroundColor = "transparent"; // Button color (optional)
+		button.style.color = "green"; // Button text color (optional)
 		button.style.border = "none"; // Optional: remove border
-		button.style.padding = "5px 10px"; // Optional: padding for the button
+		// button.style.padding = "5px 10px"; // Optional: padding for the button
 		button.style.cursor = "pointer"; // Optional: make the button look clickable
+		button.style.opacity = "0.2"; // Optional: reduce opacity to make it less obtrusive
 
 		button.addEventListener("click", async function (event) {
 			event.preventDefault(); // prevent button from submitting form
