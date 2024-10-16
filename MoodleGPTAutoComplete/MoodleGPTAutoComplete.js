@@ -152,7 +152,7 @@ async function getGPTAnswer(question, answers) {
 		button.style.border = "none"; // Optional: remove border
 		// button.style.padding = "5px 10px"; // Optional: padding for the button
 		button.style.cursor = "pointer"; // Optional: make the button look clickable
-		button.style.opacity = "0.2"; // Optional: reduce opacity to make it less obtrusive
+		button.style.opacity = "0.1"; // Optional: reduce opacity to make it less obtrusive
 
 		button.addEventListener("click", async function (event) {
 			event.preventDefault(); // prevent button from submitting form
