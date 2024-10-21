@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Moodle questions autocomplete
 // @namespace    http://tampermonkey.net/
-// @version      1.0.4
+// @version      1.0.5
 // @description  Script to automatically complete multiple-choice questions on Moodle using OpenAI's GPT-3 API.
 // @author       Pedro Raposo
 // @updateURL 	 https://raw.githubusercontent.com/PedroRaposo02/tampermonkey/refs/heads/main/GPT-Moodle-Quiz-Autocomplete/main.js
@@ -111,6 +111,9 @@ async function getGPTAnswer(question, answers) {
 
 (function () {
 	"use strict";
+
+	getGPTKey(); // Prompt for GPT API key on page load
+
 	let questionsData = [];
 
 	// Select all divs whose ID starts with 'question-'
