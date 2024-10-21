@@ -35,7 +35,11 @@ The **GPT Answer Selector** is a Tampermonkey script designed to enhance the use
    - Click the **File** menu and select **Save** (or press `Ctrl+S`).
 
 5. **Get Your OpenAI API Key**:
-   - Sign up at [OpenAI](https://openai.com) and create an API key.
+   - Sign up at [OpenAI](https://platform.openai.com/).
+	 - Create an API key in the **API Keys** (Settings - Your Profile - User API Keys) section.
+	 - Copy the key and keep it secure.
+	 - Add the key to the script when prompted.
+	 - Add billing information to your OpenAI account to enable API usage. (min. $5 required, api usage is charged per request)
 
 ## Usage
 
